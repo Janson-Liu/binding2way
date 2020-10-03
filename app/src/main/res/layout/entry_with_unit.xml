@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+## A layout to have one numerical value along with a Unit String.
+
+### This layout is powered by ViewBinging. Variables are sent from
+hosting layouts while using <include> tag. Layout width and height
+need to be defined by the same <include> tag as well.
+Sample implementation:
+
+        <include
+                    android:id="@+id/bolus_setting_base_insulinInput"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    layout="@layout/layout_text_with_unit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvBaseInsulin"
+                    app:unittext="@{@string/unit}"
+                    app:inputType="@{InputType.NUMBER_DECIMAL}"
+                    app:enabled="@{false}"
+                    app:hint = "@{`0.0`}"
+                    />
+
+-->
+<layout>
+
+    <data>
+        <import type="android.text.InputType"/>
+        <variable
+            name="model"
+            type="ir.drax.binding2way.v.EntryWithUnit" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/unit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#aaaaaa"
+            android:gravity="center"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="@{model.unit}" />
+
+        <EditText
+            android:inputType="@{model.inputType}"
+            android:id="@+id/etValue"
+            android:text="@={model.value}"
+            android:enabled="@{!model.readOnly}"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:hint="@{model.hint}"
+            android:maxLength="@{model.maxLength}"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            />
+    </LinearLayout>
+</layout>

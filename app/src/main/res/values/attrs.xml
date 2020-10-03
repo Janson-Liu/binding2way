@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="EntryWithUnit">
+        <attr name="readOnly" format="boolean"/>
+        <attr name="maxLength" format="integer"/>
+        <attr name="inputType" format="enum">
+            <enum name="text" value="1"/>
+            <enum name="number" value="2"/>
+            <enum name="signed_number" value="4098"/>
+            <enum name="decimal_number" value="8194"/>
+            <enum name="phone" value="8194"/>
+        </attr>
+        <attr name="unit" format="string"/>
+        <attr name="hint" format="string"/>
+    </declare-styleable>
+
+</resources>

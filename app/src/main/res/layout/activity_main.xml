@@ -13,37 +13,75 @@
         tools:context=".MainActivity">
 
         <TextView
-            android:id="@+id/tvValue"
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:gravity="center"
-            android:text="@{String.valueOf(viewModel.testFloat)}"
+            android:text="Text with unit show case"
             android:textSize="24sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!--<ir.drax.binding2way.v.EntryWithUnit
-            app:layout_constraintTop_toBottomOf="@id/tvValue"
-            android:layout_marginTop="16dp"
+        <TextView
+            android:id="@+id/tvFloatValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:text='@{"Non-mutable Float : " + String.valueOf(viewModel.testFloat)}'
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+        <ir.drax.binding2way.widget.InputWithUnit
+            android:id="@+id/floatInput"
+            app:layout_constraintTop_toBottomOf="@id/tvFloatValue"
+            android:layout_marginTop="8dp"
             text="@={viewModel.testFloat}"
+            app:hint="Some number"
+            app:maxLength="8"
+            app:unit="mg/l"
+            app:inputType="signed_number"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>-->
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:id="@+id/tvIntValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:text='@{"Mutable Int : " + String.valueOf(viewModel.testMutableInt)}'
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/floatInput" />
+
+        <ir.drax.binding2way.widget.InputWithUnit
+            android:id="@+id/intInput"
+            app:layout_constraintTop_toBottomOf="@id/tvIntValue"
+            android:layout_marginTop="8dp"
+            app:text="@={viewModel.testMutableInt}"
+            app:hint="Some number"
+            app:maxLength="8"
+            app:unit="mg/l"
+            app:inputType="signed_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
 
         <Button
-            android:onClick='@{viewModel::update}'
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/btnUpdate"
+            app:layout_constraintTop_toBottomOf="@id/intInput"
+            android:text="update static values"
+            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:gravity="center"
-            android:text="@={viewModel.testFloat}"
-            app:layout_constraintTop_toBottomOf="@id/tvValue" />
+            android:text="@={viewModel.testMutableInt}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

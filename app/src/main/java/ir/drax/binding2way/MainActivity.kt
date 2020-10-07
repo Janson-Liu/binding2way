@@ -1,13 +1,10 @@
 package ir.drax.binding2way
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.activity.viewModels
-import androidx.databinding.DataBindingComponent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import ir.drax.binding2way.databinding.ActivityMainBinding
-import ir.drax.binding2way.databinding.EntryWithUnitBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var  binding:ActivityMainBinding
@@ -20,5 +17,11 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner=this
         binding.viewModel=viewModel
 
+        binding.btnUpdate.setOnClickListener {
+            binding.tvFloatValue.text = viewModel.testFloat.toString()
+        }
+
+
     }
 }
+

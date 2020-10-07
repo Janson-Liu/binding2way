@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="EntryWithUnit">
+    <declare-styleable name="InputWithUnit">
         <attr name="readOnly" format="boolean"/>
         <attr name="maxLength" format="integer"/>
         <attr name="inputType" format="enum">

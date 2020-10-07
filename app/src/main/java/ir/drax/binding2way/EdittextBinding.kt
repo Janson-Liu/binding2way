@@ -11,49 +11,29 @@ import androidx.databinding.InverseBindingAdapter
  * @author chetansachdeva on 09/04/18
  */
 
-class EditTextBindings {
-    companion object InverseSpinnerBindings {
+@BindingAdapter("android:text")
+fun EditText.bindObjectInText(value: Any?) {
+    value?.let {
+        if (value!=tag) { // Store the original value
+            tag = value   // To prevent duplicate/extra modification
 
-        @JvmStatic
-        @BindingAdapter("android:text")
-        fun EditText.bindObjectInText(value: Any?) {
-            value?.let {
-                if (tag == value) return
-                tag = value
+            if (value is Float)// Cast float types to 1 float number
+                setText(String.format("%1f", value))
+            else
                 setText(value.toString())
-                // Set the cursor to the end of the text
-//            setSelection(text.indexOf().length)
-            }
-        }
-
-        @JvmStatic
-        @InverseBindingAdapter(attribute = "android:text")
-        fun EditText.getObjectFromBinding(): Int? {
-            Log.e("getObjectFromBinding",text.toString())
-//            Log.e("--------->",text.toString().toFloat().toString())
-            val result=text.toString()
-            /*return when(tag){
-                is Float-> {
-                    val position = text.indexOf(".")
-                    setSelection(if (position>=0)position else length())
-                    if(result.isEmpty())0f
-                    else if (result == ".") 0f
-                    else if (result == "-") -.0f
-                    else result.toFloat()
-
-                }
-                is Double-> result.toDouble()
-                is Int-> {
-                    if(result.isEmpty()) 0
-                    else if (result == "-") -0
-                    else result.toInt()
-
-                }
-                else-> result
-            }*/
-            return 2
         }
     }
+}
 
+@InverseBindingAdapter(attribute = "android:text")
+fun EditText.getFloatFromBinding(): Float? {
+    val result=text.toString()
 
+    return result.toFloat()
+}
+@InverseBindingAdapter(attribute = "android:text")
+fun EditText.getIntFromBinding(): Int? {
+    val result=text.toString()
+
+    return result.toInt()
 }

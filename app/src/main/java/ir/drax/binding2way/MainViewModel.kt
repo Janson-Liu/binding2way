@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel
 
 class MainViewModel:ViewModel() {
 
-    var testFloat= 8
-    var testMutableInt= MutableLiveData(158)
+    var testFloat= 8f
+    var testMutableInt= MutableLiveData<Int>()
     var testMutableString= MutableLiveData("Hey! I can be updated")
     fun update(v:View){
 

@@ -70,18 +70,25 @@
             android:layout_height="wrap_content"/>
 
 
+        <EditText
+            android:id="@+id/etInput"
+            app:layout_constraintTop_toBottomOf="@id/intInput"
+            android:text="@={viewModel.testMutableInt}"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:hint="free input type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <Button
             android:id="@+id/btnUpdate"
-            app:layout_constraintTop_toBottomOf="@id/intInput"
+            app:layout_constraintTop_toBottomOf="@id/etInput"
             android:text="update static values"
             android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <EditText
-            android:text="@={viewModel.testMutableInt}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -4,6 +4,7 @@ import android.util.Log
 import android.widget.EditText
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
+import java.lang.Exception
 
 
 /**
@@ -29,11 +30,19 @@ fun EditText.bindObjectInText(value: Any?) {
 fun EditText.getFloatFromBinding(): Float? {
     val result=text.toString()
 
-    return result.toFloat()
+    return try {
+        result.toFloat()
+    }catch (e:Exception){
+        0f
+    }
 }
 @InverseBindingAdapter(attribute = "android:text")
 fun EditText.getIntFromBinding(): Int? {
     val result=text.toString()
 
-    return result.toInt()
+    return try {
+        result.toInt()
+    }catch (e:Exception){
+        0
+    }
 }
